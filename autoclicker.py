@@ -1,7 +1,7 @@
 # Set time between clicks (Secs) set to <= 0 for fastest 
-KEY_INPUT_DELAY = 0.1
+KEY_INPUT_DELAY = 0.001
 # Amount of clicks to preform before checking for exit keys (Use to speed up program if KEY_INPUT_DELAY is <= 0 (set EXIT_POLL_ITER higher))
-EXIT_POLL_ITER = 1
+EXIT_POLL_ITER = 50
 # Number of seconds before program starts
 START_WAIT = 3
 
@@ -34,6 +34,6 @@ while True:
         stT = time.time()
         pyautogui.leftClick()
         curT = time.time()
-        if KEY_INPUT_DELAY > 0 and curT - stT > 0:
+        if KEY_INPUT_DELAY > 0 and KEY_INPUT_DELAY - (curT - stT) >= 0:
             time.sleep(KEY_INPUT_DELAY - (curT - stT))
 print("Finished!")
